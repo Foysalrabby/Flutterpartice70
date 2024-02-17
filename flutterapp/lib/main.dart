@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    var arrayindex = [1,2,3,4,5,6,7,8,10,11];
+    var arrayindex = [1, 2, 3, 4, 5, 6, 7, 8, 10, 11];
 
     return Scaffold(
       appBar: AppBar(
@@ -42,18 +42,24 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: ListWheelScrollView(
-          itemExtent: 100,
-          children:arrayindex.map((value) => Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: double.infinity,
-                color: Colors.blue,
-                
-              ),
-            ),
-          )).toList(),
-          
+          itemExtent: 200,
+          children: arrayindex
+              .map((value) => Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: Text("${value}"),
+                        width: double.infinity,
+                        height: double.infinity,
+                        
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ))
+              .toList(),
         ),
       ),
     );
