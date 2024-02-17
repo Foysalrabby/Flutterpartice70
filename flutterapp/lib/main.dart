@@ -49,7 +49,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 gradient: LinearGradient(
                   colors:[
                    Colors.blue.shade300,Colors.yellow.shade100
-                  ] ),
+                  ] ,
+                  begin: FractionalOffset(0.0,1.0),
+                  end: FractionalOffset(0.1,0.0)
+                  ),
              
                 ),
               
