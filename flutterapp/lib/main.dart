@@ -47,7 +47,42 @@ class _MyHomePageState extends State<MyHomePage> {
      
         title: Text(widget.title),
       ),
-      body: Center(),
+      body: Center(
+        child: ListWheelScrollView(
+          itemExtent: 100,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width:double.infinity,
+                color: Colors.amber,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width:double.infinity,
+                color: Colors.amber,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width:double.infinity,
+                color: Colors.amber,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width:double.infinity,
+                color: Colors.amber,
+              ),
+            ),
+          ],
+
+        ),
+      ),
       
      
     );
