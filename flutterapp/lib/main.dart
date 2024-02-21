@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +32,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var inputtextcontroller = TextEditingController();
+  var Namevaluetext=" NO NAME";
+  @override
+  void initState() {
+    super.initState();
+    getValur();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,29 +47,45 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(widget.title),
         ),
-        body:Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Center(
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                gradient: LinearGradient(
-                  colors:[
-                   Colors.blue.shade300,Colors.yellow.shade100
-                  ] ,
-                  begin: FractionalOffset(0.0,1.0),
-                  end: FractionalOffset(0.1,0.0)
-                  ),
-             
+        body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Container(
+                width: 300,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextField(
+                      controller: inputtextcontroller,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          labelText: "NAME"),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ElevatedButton(
+                        onPressed: () async {
+                          var name = inputtextcontroller.text.toString();
+                          var sharepreference =
+                              await SharedPreferences.getInstance();
+                          sharepreference.setString("name", name);
+                        },
+                        child: Text("save")),
+                    Text(Namevaluetext),
+                  ],
                 ),
-              
-              
-            ),
-          ),
-        )
-        
-        );
+              ),
+            )));
+  }
+
+  void getValur() async {
+    var initilazesharepp = await SharedPreferences.getInstance();
+    var fgetname = initilazesharepp.getString("name");
+   
+    setState(() {
+       Namevaluetext = fgetname != null ? fgetname : "no name";
+    });
   }
 }
