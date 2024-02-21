@@ -33,7 +33,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var inputtextcontroller = TextEditingController();
-  var Namevaluetext=" NO NAME";
+  static const String keyName = "name";
+  var Namevaluetext = " NO NAME";
   @override
   void initState() {
     super.initState();
@@ -70,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           var name = inputtextcontroller.text.toString();
                           var sharepreference =
                               await SharedPreferences.getInstance();
-                          sharepreference.setString("name", name);
+                          sharepreference.setString(keyName, name);
                         },
                         child: Text("save")),
                     Text(Namevaluetext),
@@ -82,10 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void getValur() async {
     var initilazesharepp = await SharedPreferences.getInstance();
-    var fgetname = initilazesharepp.getString("name");
-   
+    var fgetname = initilazesharepp.getString(keyName);
+
     setState(() {
-       Namevaluetext = fgetname != null ? fgetname : "no name";
+      Namevaluetext = fgetname != null ? fgetname : "no name";
     });
   }
 }
