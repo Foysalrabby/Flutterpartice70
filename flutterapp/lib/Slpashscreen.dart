@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutterapp/Login.dart';
 
@@ -27,7 +26,7 @@ class _SlpashscreenState extends State<Slpashscreen> {
           color: Colors.amber,
           width: double.infinity,
           height: double.infinity,  
-        child: AnimatedContainer(duration: Duration(seconds: 5),
+        child: AnimatedContainer(duration: Duration(seconds: 3),
         child: Image.asset("assets/images/category_2.png"),
         height: 400,
         width: 400,
