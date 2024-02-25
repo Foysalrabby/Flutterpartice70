@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutterapp/Slpashscreen.dart';
 import 'package:flutterapp/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Loginpage extends StatefulWidget {
   @override
@@ -62,7 +64,12 @@ class Loginstate extends State<Loginpage> {
             height: 10,
           ),
           ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
+                //if successfully exicutated logen in slapshscreen class loginpart then exicuted the part
+                //get shareprefernce static loginkey value 1st click button login value sate before clivk false
+
+                var intilizesharepre = await SharedPreferences.getInstance();  
+                intilizesharepre.setBool(SlpashscreenState.keylogin, true);
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
